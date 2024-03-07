@@ -1,9 +1,9 @@
-const ParkingLot = require('../entities/parkingLot');
+const Slot = require('../entities/slot');
 
-exports.createParkingLot = async (capacity) => {
-    const parkingLot = new ParkingLot({
-        capacity
-    });
-    await parkingLot.save();
-    return parkingLot;
+exports.getRegistrationNumbersByColor = async (color, parkingLotId) => {
+    // Implement logic to retrieve registration numbers by color
+};
+
+exports.getSlotNumbersByColor = async (color, parkingLotId) => {
+    // Implement logic to retrieve slot numbers by color
 };
