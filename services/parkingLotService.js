@@ -5,7 +5,7 @@ exports.createParkingLot = async (capacity) => {
     if (capacity < 0 || capacity > 2000) {
         throw new Error('Capacity should be between 0 and 2000');
     }
-    const parkingLot = new ParkingLot({capacity});
-    await parkingLot.save();
+    const parkingLot = new ParkingLot.ParkingLot({capacity});
+    await parkingLot.save(); // Save the parking lot instance
     return parkingLot;
 };

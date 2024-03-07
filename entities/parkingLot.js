@@ -15,7 +15,7 @@ const parkingLotSchema = new Schema({
 });
 
 // Define save method
-parkingLotSchema.methods.save = async function() {
+parkingLotSchema.methods.saveParkingLot = async function() {
     try {
         return await this.save();
     } catch (error) {
@@ -25,4 +25,4 @@ parkingLotSchema.methods.save = async function() {
 
 const ParkingLot = mongoose.model('ParkingLot', parkingLotSchema);
 
-module.exports = { ParkingLot, save: parkingLotSchema.methods.save };
+module.exports = { ParkingLot, saveParkingLot: parkingLotSchema.methods.saveParkingLot };

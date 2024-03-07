@@ -16,7 +16,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Your other middleware and route handling code goes here
 
 // Error handling middleware
 app.use((err, req, res, next) => {
