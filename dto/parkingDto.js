@@ -8,4 +8,4 @@ class ParkingDTO {
     }
 }
 
-module.exports = ParkingDTO;
+export {ParkingDTO};

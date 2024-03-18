@@ -1,5 +1,5 @@
-const {createParkingLot} = require('../dao/parkingLotDao');
+import { createParkingLotDao } from '../dao/parkingLotDao.js';
 
-exports.createParkingLot = async (capacity) => {
-    await createParkingLot(capacity);
+export const createParkingLotService = async (capacity) => {
+    await createParkingLotDao(capacity);
 };

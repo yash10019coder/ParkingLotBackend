@@ -1,23 +1,23 @@
-const {Parking} = require('../entities/parking');
+import {Parking} from '../entities/parking.js';
 
-exports.parkCar = async (parkingLotId, registrationNumber, color) => {
+export const parkCarDao = async (parkingLotId, registrationNumber, color) => {
     try {
-        
-
-        
-        const parkingLotFull = await Parking.countDocuments({ parkingLotId, status: 'PARKED' }) >= capacity;
+        const parkingLotFull =
+            (await Parking.countDocuments({
+                parkingLotId,
+                status: 'PARKED',
+            })) >= capacity;
         if (parkingLotFull) {
             throw new Error('Parking lot is full');
         }
 
-        
         const parking = new Parking({
             parkingLotId,
             registrationNumber,
             color,
             status: 'PARKED',
         });
-        const error= parking.validateSync()
+        const error = parking.validateSync();
         await parking.save();
 
         return parking;
@@ -26,19 +26,21 @@ exports.parkCar = async (parkingLotId, registrationNumber, color) => {
     }
 };
 
-exports.leaveCar = async (parkingLotId, registrationNumber) => {
+export const leaveCarDao = async (parkingLotId, registrationNumber) => {
     try {
-        
-        const parking = await Parking.findOne({ parkingLotId, registrationNumber, status: 'PARKED' });
+        const parking = await Parking.findOne({
+            parkingLotId,
+            registrationNumber,
+            status: 'PARKED',
+        });
         if (!parking) {
             throw new Error('Car not found in parking lot');
         }
 
-        
         parking.status = 'LEFT';
         await parking.save();
 
-        return parking.slotNumber; 
+        return parking.slotNumber;
     } catch (error) {
         throw new Error('Error leaving car: ' + error.message);
     }

@@ -1,43 +1,49 @@
-const SlotService = require('../services/slotService');
+import {
+    getRegistrationNumbersByColorService,
+    getSlotNumbersByColorService,
+} from '../services/slotService.js';
 
-exports.getRegistrationNumbersByColor = async (req, res) => {
+export const getRegistrationNumbersByColorController = async (req, res) => {
     try {
         const { color, parkingLotId } = req.query;
-        const registrations = await SlotService.getRegistrationNumbersByColor(color, parkingLotId);
+        const registrations = await getRegistrationNumbersByColorService(
+            color,
+            parkingLotId,
+        );
         res.status(200).json({
             isSuccess: true,
             response: {
-                registrations
-            }
+                registrations,
+            },
         });
     } catch (error) {
         console.error('Error fetching registration numbers by color:', error);
         res.status(500).json({
             isSuccess: false,
             error: {
-                reason: 'Internal Server Error'
-            }
+                reason: 'Internal Server Error',
+            },
         });
     }
 };
 
-exports.getSlotNumbersByColor = async (req, res) => {
+export const getSlotNumbersByColorController = async (req, res) => {
     try {
         const { color, parkingLotId } = req.query;
-        const slots = await SlotService.getSlotNumbersByColor(color, parkingLotId);
+        const slots = await getSlotNumbersByColorService(color, parkingLotId);
         res.status(200).json({
             isSuccess: true,
             response: {
-                slots
-            }
+                slots,
+            },
         });
     } catch (error) {
         console.error('Error fetching slot numbers by color:', error);
         res.status(500).json({
             isSuccess: false,
             error: {
-                reason: 'Internal Server Error'
-            }
+                reason: 'Internal Server Error',
+            },
         });
     }
 };

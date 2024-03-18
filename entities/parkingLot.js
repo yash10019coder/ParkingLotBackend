@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
 const Schema = mongoose.Schema;
 
 const parkingLotSchema = new Schema({
@@ -6,15 +7,14 @@ const parkingLotSchema = new Schema({
         type: Number,
         required: true,
         min: 0,
-        max: 2000
+        max: 2000,
     },
     isActive: {
         type: Boolean,
-        default: true
-    }
+        default: true,
+    },
 });
-
 
 const ParkingLot = mongoose.model('ParkingLot', parkingLotSchema);
 
-module.exports = ParkingLot
+export {ParkingLot};

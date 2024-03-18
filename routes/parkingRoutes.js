@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const parkingController = require('../controllers/parkingController');
+import express from 'express';
 
-router.post('/', parkingController.parkCar);
-router.delete('/', parkingController.leaveCar);
+import {parkCarController, leaveCarController} from "../controllers/parkingController.js";
 
-module.exports = router;
+const parkingRoutes = express.Router();
+parkingRoutes.post('/', parkCarController);
+parkingRoutes.delete('/', leaveCarController);
+
+export {parkingRoutes};

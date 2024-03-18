@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const slotController = require('../controllers/slotController');
+import express from 'express';
 
-router.get('/', slotController.getRegistrationNumbersByColor);
-router.get('/slots', slotController.getSlotNumbersByColor);
+import {getRegistrationNumbersByColorController, getSlotNumbersByColorController} from "../controllers/slotController.js";
 
-module.exports = router;
+const slotRoutes = express.Router();
+slotRoutes.get('/', getRegistrationNumbersByColorController);
+slotRoutes.get('/slots', getSlotNumbersByColorController);
+
+export {slotRoutes};

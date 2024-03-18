@@ -28,9 +28,10 @@ describe('Parking Lot Management System', () => {
     });
 
     describe('Park Car', () => {
-        
         beforeEach(() => {
-            sinon.stub(parkingLotService, 'parkCar').resolves({ slotNumber: 1, status: 'PARKED' });
+            sinon
+                .stub(parkingLotService, 'parkCar')
+                .resolves({ slotNumber: 1, status: 'PARKED' });
         });
 
         afterEach(() => {
@@ -38,19 +39,15 @@ describe('Parking Lot Management System', () => {
         });
 
         it('should park a car and return parking info', async () => {
-            const response = await request(app)
-                .post('/api/Parkings')
-                .send({
-                    parkingLotId: '65e72adb1a811501c45afd72',
-                    registrationNumber: 'MH12A1234',
-                    color: 'YELLOW'
-                });
+            const response = await request(app).post('/api/Parkings').send({
+                parkingLotId: '65e72adb1a811501c45afd72',
+                registrationNumber: 'MH12A1234',
+                color: 'YELLOW',
+            });
 
             expect(response.status).to.equal(200);
             expect(response.body).to.have.property('slotNumber', 1);
             expect(response.body).to.have.property('status', 'PARKED');
         });
     });
-
-    
 });

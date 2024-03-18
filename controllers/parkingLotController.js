@@ -1,20 +1,20 @@
-const ParkingLotService = require('../services/parkingLotService');
+import { createParkingLotService } from '../services/parkingLotService.js';
 
-exports.createParkingLot = async (req, res) => {
+export const createParkingLotController = async (req, res) => {
     try {
         const { capacity } = req.body;
-        const parkingLot = await ParkingLotService.createParkingLot(capacity);
+        const parkingLot = await createParkingLotService(capacity);
         res.status(201).json({
             isSuccess: true,
-            response: parkingLot
+            response: parkingLot,
         });
     } catch (error) {
         console.error('Error creating parking lot:', error);
         res.status(500).json({
             isSuccess: false,
             error: {
-                reason: 'Internal Server Error'
-            }
+                reason: 'Internal Server Error',
+            },
         });
     }
 };

@@ -1,6 +1,6 @@
-const {ParkingLot} = require('../entities/parkingLot');
+import {ParkingLot} from '../entities/parkingLot.js';
 
-exports.createParkingLot = async (capacity) => {
+export const createParkingLotDao = async (capacity) => {
     try {
         if (capacity < 0 || capacity > 2000) {
             throw new Error('Capacity should be between 0 and 2000');

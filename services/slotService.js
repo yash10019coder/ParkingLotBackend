@@ -1,11 +1,17 @@
-const {getRegistrationNumbersByColor, getSlotNumbersByColor} = require('../dao/slotDao');
+import {
+    getRegistrationNumbersByColorDao,
+    getSlotNumbersByColorDao,
+} from '../dao/slotDao.js';
 
-exports.getRegistrationNumbersByColor = async (color, parkingLotId) => {
-    const registrationNumbers = await getRegistrationNumbersByColor(color, parkingLotId);
+export const getRegistrationNumbersByColorService = async (color, parkingLotId) => {
+    const registrationNumbers = await getRegistrationNumbersByColorDao(
+        color,
+        parkingLotId,
+    );
     return registrationNumbers;
 };
 
-exports.getSlotNumbersByColor = async (color, parkingLotId) => {
-    const slotNumbers = getSlotNumbersByColor(color, parkingLotId);
+export const getSlotNumbersByColorService = async (color, parkingLotId) => {
+    const slotNumbers = getSlotNumbersByColorDao(color, parkingLotId);
     return slotNumbers;
 };

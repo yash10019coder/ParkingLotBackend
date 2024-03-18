@@ -1,18 +1,16 @@
-const mongoose = require('mongoose');
-
+import mongoose from 'mongoose';
 
 const MONGODB_URI = 'mongodb://localhost:27017/parking_lot_db';
-
 
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify: false
+    useFindAndModify: false,
 };
 
-
-mongoose.connect(MONGODB_URI, options)
+mongoose
+    .connect(MONGODB_URI, options)
     .then(() => {
         console.log('Connected to MongoDB');
     })

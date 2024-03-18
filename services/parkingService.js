@@ -1,9 +1,9 @@
-const Parking = require('../dao/parkingDao');
+import { parkCarDao, leaveCarDao } from '../dao/parkingDao.js';
 
-exports.parkCar = async (parkingLotId, registrationNumber, color) => {
-    await Parking.parkCar(parkingLotId, registrationNumber, color);
+export const parkCarService = async (parkingLotId, registrationNumber, color) => {
+    await parkCarDao(parkingLotId, registrationNumber, color);
 };
 
-exports.leaveCar = async (parkingLotId, registrationNumber) => {
-    return await Parking.leaveCar(parkingLotId, registrationNumber);
+export const leaveCarService = async (parkingLotId, registrationNumber) => {
+    return await leaveCarDao(parkingLotId, registrationNumber);
 };

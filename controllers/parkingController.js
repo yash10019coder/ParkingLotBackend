@@ -1,42 +1,46 @@
-const ParkingService = require('../services/parkingService');
+import { parkCarService, leaveCarService } from '../services/parkingService.js';
 
-exports.parkCar = async (req, res) => {
+export const parkCarController = async (req, res) => {
     try {
         const { parkingLotId, registrationNumber, color } = req.body;
-        const parkingInfo = await ParkingService.parkCar(parkingLotId, registrationNumber, color);
+        const parkingInfo = await parkCarService(
+            parkingLotId,
+            registrationNumber,
+            color,
+        );
         res.status(200).json({
             isSuccess: true,
-            response: parkingInfo
+            response: parkingInfo,
         });
     } catch (error) {
         console.error('Error parking car:', error);
         res.status(500).json({
             isSuccess: false,
             error: {
-                reason: 'Internal Server Error'
-            }
+                reason: 'Internal Server Error',
+            },
         });
     }
 };
 
-exports.leaveCar = async (req, res) => {
+export const leaveCarController = async (req, res) => {
     try {
         const { parkingLotId, registrationNumber } = req.body;
-        const slotNumber = await ParkingService.leaveCar(parkingLotId, registrationNumber);
+        const slotNumber = await leaveCarService(parkingLotId, registrationNumber);
         res.status(200).json({
             isSuccess: true,
             response: {
                 slotNumber,
-                status: 'LEFT'
-            }
+                status: 'LEFT',
+            },
         });
     } catch (error) {
         console.error('Error leaving car:', error);
         res.status(500).json({
             isSuccess: false,
             error: {
-                reason: 'Internal Server Error'
-            }
+                reason: 'Internal Server Error',
+            },
         });
     }
 };
