@@ -7,29 +7,29 @@ const logger = require('./logger/logger')
 
 const app = express();
 
-// Middleware
+
 app.use(bodyParser.json());
 
-// Logger middleware
+
 app.use((req, res, next) => {
-    logger.info(`${req.method} ${req.url}`); // Log the request method and URL
+    logger.info(`${req.method} ${req.url}`); 
     next();
 });
 
 
-// Error handling middleware
+
 app.use((err, req, res, next) => {
-    logger.error(err.stack); // Log the error stack trace
+    logger.error(err.stack); 
     res.status(500).send('Something went wrong!');
 });
 
 
-// Routes
+
 app.use('/api/ParkingLots', parkingLotRoutes);
 app.use('/api/Parkings', parkingRoutes);
 app.use('/api/Slots', slotRoutes);
 
-// Error handling middleware
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({
@@ -40,7 +40,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Start server
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

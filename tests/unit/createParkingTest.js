@@ -28,7 +28,7 @@ describe('Parking Lot Management System', () => {
     });
 
     describe('Park Car', () => {
-        // Mock the parkCar function
+        
         beforeEach(() => {
             sinon.stub(parkingLotService, 'parkCar').resolves({ slotNumber: 1, status: 'PARKED' });
         });
@@ -52,5 +52,5 @@ describe('Parking Lot Management System', () => {
         });
     });
 
-    // Similar tests for Leave Car and Fetch Slots by Color can be written
+    
 });

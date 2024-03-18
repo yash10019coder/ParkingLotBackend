@@ -1,7 +1,7 @@
 const winston = require('winston');
 const { format } = winston;
 
-// Define log format
+
 const logFormat = format.combine(
     format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
     format.errors({ stack: true }),
@@ -9,7 +9,7 @@ const logFormat = format.combine(
     format.json()
 );
 
-// Create a logger instance
+
 const logger = winston.createLogger({
     level: 'info',
     format: logFormat,
