@@ -9,7 +9,17 @@ const parkingSchema = new Schema({
     },
     registrationNumber: {
         type: String,
-        required: true
+        required: true,
+        validate: (v) => {
+            const state = v.slice(0, 2);
+            const districtNumber = v.slice(2, 4);
+            const uniqueAlphaNumericCode = v.slice(4);
+            if (state.regex(/^[A-Z]{2}$/) && districtNumber > 0 && districtNumber <= 20 && uniqueAlphaNumericCode.regex(/^[A-Z0-9]{4}$/)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     },
     color: {
         type: String,

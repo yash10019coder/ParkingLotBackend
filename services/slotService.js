@@ -1,9 +1,14 @@
-const Slot = require('../entities/slot');
+const {Slot} = require('../entities/slot');
+const SlotDto = require('../dto/slotDto');
 
 exports.getRegistrationNumbersByColor = async (color, parkingLotId) => {
-    // Implement logic to get registration numbers by color
+    const slot = await Slot.find({color, parkingLotId}).populate('parkingLotId');
+    const registrationNumbers = slot.map(slot => slot.parkingLotId.registrationNumber);
+    return registrationNumbers;
 };
 
 exports.getSlotNumbersByColor = async (color, parkingLotId) => {
-    // Implement logic to get slot numbers by color
+    const slot = await Slot.find({color, parkingLotId});
+    const slotNumbers = slot.map(slot => slot.slotNumber);
+    return slotNumbers;
 };

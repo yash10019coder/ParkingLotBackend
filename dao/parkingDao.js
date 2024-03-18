@@ -15,8 +15,9 @@ exports.parkCar = async (parkingLotId, registrationNumber, color) => {
             parkingLotId,
             registrationNumber,
             color,
-            status: 'PARKED'
+            status: 'PARKED',
         });
+        const error= Parking.validate();
         await parking.save();
 
         return parking;
