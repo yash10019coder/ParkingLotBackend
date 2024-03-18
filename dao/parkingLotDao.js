@@ -12,3 +12,14 @@ export const createParkingLotDao = async (capacity) => {
         throw new Error('Error creating parking lot: ' + error.message);
     }
 };
+
+export const getParkingLotSizeDao = async (parkingLotId) => {
+    try {
+        const parkingLot = await ParkingLot.findOne({
+            _id: parkingLotId,
+        }).select('capacity');
+        return parkingLot.capacity;
+    } catch (error) {
+        throw new Error('Error getting parking lot size: ' + error.message);
+    }
+};

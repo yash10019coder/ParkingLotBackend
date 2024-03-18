@@ -1,7 +1,9 @@
 import { Parking } from '../entities/parking.js';
+import { getParkingLotSizeDao } from './parkingLotDao.js';
 
 export const parkCarDao = async (parkingLotId, registrationNumber, color) => {
     try {
+        const capacity = await getParkingLotSizeDao(parkingLotId);
         const parkingLotFull =
             (await Parking.countDocuments({
                 parkingLotId,
