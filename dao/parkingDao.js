@@ -1,4 +1,4 @@
-import {Parking} from '../entities/parking.js';
+import { Parking } from '../entities/parking.js';
 
 export const parkCarDao = async (parkingLotId, registrationNumber, color) => {
     try {

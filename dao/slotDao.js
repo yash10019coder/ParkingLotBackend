@@ -1,4 +1,4 @@
-import {Slot} from '../entities/slot.js';
+import { Slot } from '../entities/slot.js';
 
 export const getRegistrationNumbersByColorDao = async (color, parkingLotId) => {
     try {

@@ -3,7 +3,10 @@ import {
     getSlotNumbersByColorDao,
 } from '../dao/slotDao.js';
 
-export const getRegistrationNumbersByColorService = async (color, parkingLotId) => {
+export const getRegistrationNumbersByColorService = async (
+    color,
+    parkingLotId,
+) => {
     const registrationNumbers = await getRegistrationNumbersByColorDao(
         color,
         parkingLotId,

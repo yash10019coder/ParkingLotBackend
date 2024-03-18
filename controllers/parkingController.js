@@ -26,7 +26,10 @@ export const parkCarController = async (req, res) => {
 export const leaveCarController = async (req, res) => {
     try {
         const { parkingLotId, registrationNumber } = req.body;
-        const slotNumber = await leaveCarService(parkingLotId, registrationNumber);
+        const slotNumber = await leaveCarService(
+            parkingLotId,
+            registrationNumber,
+        );
         res.status(200).json({
             isSuccess: true,
             response: {

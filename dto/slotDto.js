@@ -6,4 +6,4 @@ class ParkingLotDTO {
     }
 }
 
-export {ParkingLotDTO};
+export { ParkingLotDTO };

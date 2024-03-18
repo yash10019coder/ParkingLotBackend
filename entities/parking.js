@@ -45,4 +45,4 @@ const parkingSchema = new Schema({
 
 const Parking = mongoose.model('Parking', parkingSchema);
 
-export {Parking};
+export { Parking };

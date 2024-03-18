@@ -1,6 +1,10 @@
 import { parkCarDao, leaveCarDao } from '../dao/parkingDao.js';
 
-export const parkCarService = async (parkingLotId, registrationNumber, color) => {
+export const parkCarService = async (
+    parkingLotId,
+    registrationNumber,
+    color,
+) => {
     await parkCarDao(parkingLotId, registrationNumber, color);
 };
 

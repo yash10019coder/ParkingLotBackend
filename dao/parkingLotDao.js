@@ -1,4 +1,4 @@
-import {ParkingLot} from '../entities/parkingLot.js';
+import { ParkingLot } from '../entities/parkingLot.js';
 
 export const createParkingLotDao = async (capacity) => {
     try {

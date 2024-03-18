@@ -8,4 +8,4 @@ class ParkingDTO {
     }
 }
 
-export {ParkingDTO};
+export { ParkingDTO };

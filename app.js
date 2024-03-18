@@ -1,10 +1,10 @@
-import {logger} from './logger/logger.js';
+import { logger } from './logger/logger.js';
 
-import {slotRoutes} from './routes/slotRoutes.js';
+import { slotRoutes } from './routes/slotRoutes.js';
 
-import {parkingRoutes} from './routes/parkingRoutes.js';
+import { parkingRoutes } from './routes/parkingRoutes.js';
 
-import {parkingLotRoutes} from './routes/parkingLotRoutes.js';
+import { parkingLotRoutes } from './routes/parkingLotRoutes.js';
 
 import bodyParser from 'body-parser';
 
