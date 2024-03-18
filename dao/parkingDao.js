@@ -1,4 +1,4 @@
-const Parking = require('../entities/parking');
+const {Parking} = require('../entities/parking');
 
 exports.parkCar = async (parkingLotId, registrationNumber, color) => {
     try {
@@ -17,7 +17,7 @@ exports.parkCar = async (parkingLotId, registrationNumber, color) => {
             color,
             status: 'PARKED',
         });
-        const error= Parking.validate();
+        const error= parking.validateSync()
         await parking.save();
 
         return parking;

@@ -1,11 +1,5 @@
-const {ParkingLot} = require('../entities/parkingLot');
+const {createParkingLot} = require('../dao/parkingLotDao');
 
 exports.createParkingLot = async (capacity) => {
-    // Implement logic to create a new parking lot
-    if (capacity < 0 || capacity > 2000) {
-        throw new Error('Capacity should be between 0 and 2000');
-    }
-    const parkingLot = new ParkingLot({capacity});
-    parkingLot.save();
-    return parkingLot;
+    await createParkingLot(capacity);
 };

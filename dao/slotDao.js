@@ -1,8 +1,8 @@
-const Slot = require('../entities/slot');
+const {Slot} = require('../entities/slot');
 
 exports.getRegistrationNumbersByColor = async (color, parkingLotId) => {
     try {
-        const slots = await Slot.find({ color, parkingLotId }).populate('parkingLotId');
+        const slots = await Slot.find({color, parkingLotId}).populate('parkingLotId');
         if (!slots || slots.length === 0) {
             throw new Error(`No car found with color ${color}`);
         }
@@ -16,7 +16,7 @@ exports.getRegistrationNumbersByColor = async (color, parkingLotId) => {
 
 exports.getSlotNumbersByColor = async (color, parkingLotId) => {
     try {
-        const slots = await Slot.find({ color, parkingLotId });
+        const slots = await Slot.find({color, parkingLotId});
         if (!slots || slots.length === 0) {
             throw new Error(`No car found with color ${color}`);
         }

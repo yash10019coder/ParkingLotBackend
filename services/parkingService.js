@@ -1,9 +1,9 @@
-const Parking = require('../entities/parking');
+const Parking = require('../dao/parkingDao');
 
 exports.parkCar = async (parkingLotId, registrationNumber, color) => {
-    // Implement logic to park a car
+    await Parking.parkCar(parkingLotId, registrationNumber, color);
 };
 
 exports.leaveCar = async (parkingLotId, registrationNumber) => {
-    // Implement logic to leave a car
+    return await Parking.leaveCar(parkingLotId, registrationNumber);
 };
